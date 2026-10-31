@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--设置网页使用 UTF-8 编码，支持显示中文和英文-->
+    <meta charset="UTF-8">
+
+    <!--让网页根据设备屏幕自动调整大小，适配手机和电脑-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--设置网页标题-->
+    <title>Profile Page</title>
+    <!--引入外部 CSS 文件，定义网页样式-->
+    <link rel="stylesheet" href="profile.css">
+</head>
+
+<body>
+    <!-- 网页主体：包含个人资料、统计数据、好友列表和页脚 -->
+    <main class="page">
+
+        <!-- 页面顶部标题 -->
+        <p class="page-heading">Profile</p>
+
+        <!--个人资料卡片-->
+        <section class="profile-card">
+
+            <!-- 左侧头像和上传按钮 -->
+            <div class="avatar-section">
+
+                <!-- 默认头像：上传图片后会用真实图片替换 -->
+                <div class="avatar" id="avatar">
+                    <span id="avatar-placeholder">profile pic</span>
+
+                    <!-- hidden 表示初始时隐藏这张图片 -->
+                    <img id="avatar-image" alt="Profile picture" hidden>
+                </div>
+
+                <!-- 点击文字即可打开文件选择窗口 -->
+                <label class="upload-label" for="avatar-upload">
+                    Change profile
+                </label>
+
+                <!-- accept="image/*" 表示只选择图片文件 -->
+                <input type="file" id="avatar-upload" accept="image/*">
+            </div>
+
+            <!-- 右侧个人资料文字 -->
+            <div class="profile-info">
+
+                <!-- 用户名 -->
+                <h1 class="profile-name" id="profile-name">
+                    PROFILE NAME
+                </h1>
+
+                <!-- 用户简介 -->
+                <p class="description" id="profile-description">
+                    Short description of anywhere between 20 to 200 characters.
+                </p>
+
+                <!-- 个人资料操作链接 -->
+                <div class="profile-links">
+
+                    <!-- 点击后通过 JavaScript 修改用户名和简介 -->
+                    <a href="#" id="edit-profile">Edit profile</a>
+
+                    <!-- 外部网站链接示例，可以替换为真实网址 -->
+                    <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+                        External link
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!--志愿服务统计卡片-->
+        <section class="stats-card">
+
+            <!-- 统计区域的小标题 -->
+            <p class="eyebrow">You have filled...</p>
+
+            <!-- 志愿服务累计时间，目前是示例数据 -->
+            <p class="hours">168 hours 59 minutes</p>
+
+            <!-- 统计卡片下方：志愿服务标签和奖牌 -->
+            <div class="stats-bottom">
+
+                <div class="stat-label">
+                    Volunteer hours!
+                </div>
+
+                <!-- 奖牌列表 -->
+                <div class="medals">
+
+                    <!-- 金牌 -->
+                    <div class="medal">
+                        <span class="medal-bar gold">Gold</span>
+                        <span class="medal-name">medal</span>
+                        <span class="medal-progress">100%</span>
+                    </div>
+
+                    <!-- 银牌 -->
+                    <div class="medal">
+                        <span class="medal-bar silver">Silver</span>
+                        <span class="medal-name">medal</span>
+                        <span class="medal-progress">100%</span>
+                    </div>
+
+                    <!-- 铜牌 -->
+                    <div class="medal">
+                        <span class="medal-bar bronze">Bronze</span>
+                        <span class="medal-name">medal</span>
+                        <span class="medal-progress">100%</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!--开发者模式开关-->
+        <section class="developer-section">
+
+            <!-- 开关的说明文字 -->
+            <div class="developer-label">
+                Nerdy developer mode?
+            </div>
+
+            <div class="toggle-row">
+
+                <!--
+                button 用作开关。
+                aria-checked="false" 表示初始状态为关闭。
+                JavaScript 会修改这个值来切换开关。
+            -->
+                <button class="toggle" id="developer-toggle" type="button" role="switch" aria-checked="false"
+                    aria-label="Toggle developer mode">
+
+                    <!-- 开关内部的圆形滑块 -->
+                    <span class="toggle-knob"></span>
+
+                </button>
+
+                <!-- 显示当前开关状态 -->
+                <span class="toggle-state" id="toggle-state">
+                    off
+                </span>
+
+            </div>
+        </section>
+
+        <!--好友列表-->
+        <section class="friends-section">
+
+            <!-- 好友列表标题 -->
+            <h2 class="section-title">FRIENDS LIST</h2>
+
+            <!-- 好友列表副标题 -->
+            <p class="section-subtitle">People you know</p>
+
+            <!--
+            这是好友列表的占位区域。
+            接入数据库后，可以在这里显示真实的好友信息。
+        -->
+            <div class="empty-friends" id="friends-list">
+                Your friends list will appear here.
+            </div>
+
+        </section>
+
+        <!--页面底部操作链接-->
+        <footer class="footer">
+
+            <!-- 取消好友操作：目前只显示提示信息 -->
+            <a href="#" data-message="Unfriend feature is not connected yet.">
+                Unfriend
+            </a>
+
+            <!-- 举报好友操作：目前只显示提示信息 -->
+            <a href="#" data-message="Report friend feature is not connected yet.">
+                Report friend
+            </a>
+
+            <!-- 举报错误资料：目前只显示提示信息 -->
+            <a href="#" data-message="Please contact support to report incorrect information.">
+                Not your friend? Report incorrect information
+            </a>
+
+        </footer>
+
+    </main>
+</body>
+
+</html>

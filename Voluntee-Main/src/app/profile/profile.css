@@ -1,0 +1,424 @@
+/* 让所有元素的宽度都包含内边距和边框，方便控制尺寸 */
+* {
+    box-sizing: border-box;
+}
+
+/* 设置整个网页的基本样式 */
+body {
+    margin: 0;                         /* 去除浏览器默认外边距 */
+    padding: 20px;                     /* 网页内容与屏幕边缘保持距离 */
+    background: #f3f3f3;               /* 设置页面背景颜色 */
+    color: #171717;                    /* 设置默认文字颜色 */
+    font-family: Arial, Helvetica, sans-serif; /* 设置字体 */
+}
+
+/* 网页主体容器，包含页面中的所有内容 */
+.page {
+    max-width: 760px;                  /* 限制网页最大宽度 */
+    min-height: calc(100vh - 40px);    /* 让页面至少占据屏幕的可用高度 */
+    margin: auto;                      /* 水平居中 */
+    padding: 40px;                     /* 设置主体内部留白 */
+    background: white;                 /* 设置主体背景为白色 */
+    border-radius: 26px;               /* 设置圆角 */
+    display: flex;                     /* 使用Flexbox布局 */
+    flex-direction: column;            /* 子元素从上到下排列 */
+    gap: 26px;                         /* 设置各个区块之间的间距 */
+}
+
+/* 页面顶部的 Profile 小标题 */
+.page-heading {
+    margin: 0;                         /* 去除默认外边距 */
+    font-size: 14px;                   /* 设置文字大小 */
+    color: #777;                       /* 设置文字颜色 */
+    text-transform: uppercase;         /* 将英文字母转换为大写 */
+    letter-spacing: 2px;               /* 增加字母间距 */
+}
+
+/*个人资料区域*/
+
+/* 个人资料卡片：左侧头像，右侧个人信息 */
+.profile-card {
+    display: flex;                     /* 让头像和个人信息水平排列 */
+    align-items: flex-start;           /* 两部分顶部对齐 */
+    gap: 22px;                         /* 设置头像与文字之间的间距 */
+    padding: 24px;                     /* 设置卡片内边距 */
+    background: #eaeaea;               /* 设置卡片背景颜色 */
+    border-radius: 14px;               /* 设置卡片圆角 */
+}
+
+/* 头像所在的区域 */
+.avatar-section {
+    width: 100px;                      /* 设置头像区域宽度 */
+    flex-shrink: 0;                    /* 防止头像区域被压缩 */
+    text-align: center;                /* 让上传按钮居中 */
+}
+
+/* 头像本身的样式 */
+.avatar {
+    width: 100px;                      /* 头像宽度 */
+    height: 100px;                     /* 头像高度 */
+    border-radius: 50%;                /* 将正方形变成圆形 */
+    background: #303030;               /* 默认头像背景颜色 */
+    color: white;                      /* 默认头像文字颜色 */
+    display: flex;                     /* 使用 Flexbox 居中内容 */
+    align-items: center;               /* 垂直居中 */
+    justify-content: center;            /* 水平居中 */
+    overflow: hidden;                  /* 隐藏超出圆形范围的图片 */
+    font-size: 15px;                   /* 设置默认头像文字大小 */
+    margin-bottom: 12px;               /* 头像与下方按钮之间的间距 */
+}
+
+/* 用户上传的图片 */
+.avatar img {
+    width: 100%;                       /* 图片宽度填满头像 */
+    height: 100%;                      /* 图片高度填满头像 */
+    object-fit: cover;                 /* 保持图片比例并填满圆形区域 */
+}
+
+/* 更换头像的文字按钮 */
+.upload-label {
+    font-size: 12px;                   /* 设置文字大小 */
+    cursor: pointer;                   /* 鼠标悬停时显示手形光标 */
+    text-decoration: underline;        /* 添加下划线 */
+}
+
+/* 隐藏原始文件选择框，使用文字代替它 */
+#avatar-upload {
+    display: none;
+}
+
+/* 个人资料文字区域 */
+.profile-info {
+    flex: 1;                           /* 占据剩余空间 */
+    min-width: 0;                      /* 允许内容在空间不足时换行 */
+}
+
+/* 用户名称 */
+.profile-name {
+    font-size: 30px;                   /* 设置名称字号 */
+    font-weight: normal;               /* 不使用粗体 */
+    margin: 0 0 8px;                   /* 设置下方间距 */
+    overflow-wrap: anywhere;           /* 名称过长时允许换行 */
+}
+
+/* 用户个人简介 */
+.description {
+    color: #555;                       /* 设置简介文字颜色 */
+    font-size: 14px;                   /* 设置简介字号 */
+    line-height: 1.5;                  /* 设置行高，让文字更易阅读 */
+    margin: 0;                         /* 去除默认外边距 */
+}
+
+/* 个人资料中的链接区域 */
+.profile-links {
+    display: flex;                     /* 让链接水平排列 */
+    flex-wrap: wrap;                   /* 空间不足时自动换行 */
+    gap: 12px;                         /* 链接之间的间距 */
+    margin-top: 18px;                  /* 与个人简介之间的距离 */
+}
+
+/* 个人资料中的链接按钮 */
+.profile-links a {
+    color: #333;                       /* 设置链接文字颜色 */
+    font-size: 13px;                   /* 设置文字大小 */
+    text-decoration: none;             /* 去除默认下划线 */
+    padding: 8px 12px;                 /* 设置按钮内部留白 */
+    border: 1px solid #ccc;            /* 添加浅灰色边框 */
+    border-radius: 7px;                /* 设置按钮圆角 */
+}
+
+/* 鼠标悬停在链接按钮上时改变背景 */
+.profile-links a:hover {
+    background: white;
+}
+
+/*志愿服务统计区域*/
+
+/* 统计信息卡片 */
+.stats-card {
+    padding: 22px 24px;                /* 设置卡片内边距 */
+    background: #eaeaea;               /* 设置浅灰色背景 */
+    border-radius: 14px;               /* 设置圆角 */
+}
+
+/* You have filled... 提示文字 */
+.eyebrow {
+    color: #555;                       /* 设置文字颜色 */
+    font-size: 15px;                   /* 设置字号 */
+    margin: 0 0 8px;                   /* 设置下方间距 */
+}
+
+/* 志愿服务累计时间 */
+.hours {
+    font-size: 38px;                   /* 设置较大的字号 */
+    margin: 0;                         /* 去除默认外边距 */
+    font-weight: normal;               /* 使用正常字重 */
+}
+
+/* 统计卡片下半部分：标签和奖牌 */
+.stats-bottom {
+    display: flex;                     /* 使用水平布局 */
+    justify-content: space-between;    /* 将两部分分别放在两端 */
+    align-items: flex-end;             /* 底部对齐 */
+    gap: 20px;                         /* 设置两部分之间的间距 */
+    margin-top: 18px;                  /* 与累计时间之间的距离 */
+}
+
+/* Volunteer hours! 文字 */
+.stat-label {
+    font-size: 22px;                   /* 设置文字大小 */
+}
+
+/* 奖牌列表容器 */
+.medals {
+    display: flex;                     /* 让奖牌横向排列 */
+    gap: 12px;                         /* 奖牌之间的距离 */
+}
+
+/* 每一个奖牌的容器 */
+.medal {
+    width: 65px;                       /* 设置奖牌宽度 */
+    font-size: 12px;                   /* 设置默认文字大小 */
+    color: #555;                       /* 设置文字颜色 */
+}
+
+/* 奖牌顶部的彩色标签 */
+.medal-bar {
+    display: block;                    /* 让标签独占一行 */
+    padding: 5px 7px;                  /* 设置标签内边距 */
+    border-radius: 4px;                 /* 设置标签圆角 */
+    color: #222;                       /* 设置标签文字颜色 */
+    font-size: 13px;                   /* 设置标签字号 */
+    font-weight: bold;                 /* 让标签文字加粗 */
+}
+
+/* 金、银、铜牌分别使用不同颜色 */
+.gold {
+    background: #e9b92e;
+}
+
+.silver {
+    background: #969696;
+}
+
+.bronze {
+    background: #c77922;
+}
+
+/* 奖牌名称，例如 medal */
+.medal-name {
+    display: block;                    /* 独占一行 */
+    margin-top: 4px;                   /* 与奖牌标签保持距离 */
+}
+
+/* 奖牌完成进度，例如 100% */
+.medal-progress {
+    display: block;                    /* 独占一行 */
+    margin-top: 3px;                   /* 与奖牌名称保持距离 */
+    font-weight: bold;                 /* 加粗进度文字 */
+}
+
+/*】开发者模式区域*/
+
+/* 开发者模式整体区域 */
+.developer-section {
+    margin-top: -8px;                  /* 稍微缩小与上方卡片的距离 */
+}
+
+/* 开发者模式问题文字 */
+.developer-label {
+    font-size: 16px;                   /* 设置字号 */
+    margin-bottom: 10px;               /* 与开关之间的距离 */
+}
+
+/* 开关和 on/off 文字所在的行 */
+.toggle-row {
+    display: flex;                     /* 水平排列 */
+    align-items: center;               /* 垂直居中 */
+    gap: 10px;                         /* 开关与文字之间的距离 */
+}
+
+/* 开关的外部轨道 */
+.toggle {
+    width: 64px;                       /* 开关宽度 */
+    height: 34px;                      /* 开关高度 */
+    padding: 4px;                      /* 圆形滑块与边缘的距离 */
+    border: none;                      /* 去除默认边框 */
+    border-radius: 30px;               /* 让轨道呈胶囊形 */
+    background: #dedede;               /* 关闭状态的背景颜色 */
+    cursor: pointer;                   /* 显示手形光标 */
+}
+
+/* 开关内部的圆形滑块 */
+.toggle-knob {
+    width: 26px;                       /* 滑块宽度 */
+    height: 26px;                      /* 滑块高度 */
+    display: block;                    /* 作为独立元素显示 */
+    background: #858585;               /* 滑块颜色 */
+    border-radius: 50%;                /* 将滑块变成圆形 */
+    transition: transform 0.2s;         /* 让滑动过程更平滑 */
+}
+
+/* 开关开启时改变轨道颜色 */
+.toggle[aria-checked="true"] {
+    background: #c8d9ff;
+}
+
+/* 开关开启时，将滑块移动到右侧 */
+.toggle[aria-checked="true"] .toggle-knob {
+    transform: translateX(30px);
+    background: #315fb9;
+}
+
+/* on/off 状态文字 */
+.toggle-state {
+    color: #777;
+    font-size: 12px;
+}
+
+/*好友列表区域*/
+
+/* 好友列表整体区域 */
+.friends-section {
+    margin-top: 10px;
+}
+
+/* FRIENDS LIST 标题 */
+.section-title {
+    font-size: 25px;
+    font-weight: normal;
+    margin: 0;
+}
+
+/* People you know 副标题 */
+.section-subtitle {
+    font-size: 12px;
+    color: #777;
+    margin: 5px 0 20px;
+}
+
+/* 暂无好友时显示的占位区域 */
+.empty-friends {
+    min-height: 110px;                 /* 设置最小高度 */
+    border: 1px dashed #ddd;           /* 添加虚线边框 */
+    border-radius: 12px;               /* 设置圆角 */
+    display: flex;                     /* 使用 Flexbox 布局 */
+    align-items: center;               /* 垂直居中提示文字 */
+    justify-content: center;            /* 水平居中提示文字 */
+    color: #888;                       /* 设置文字颜色 */
+    font-size: 14px;                   /* 设置字号 */
+}
+
+/*页面底部区域*/
+
+/* 底部操作链接的容器 */
+.footer {
+    margin-top: auto;                  /* 将页脚推向页面底部 */
+    padding-top: 25px;                  /* 与上方内容保持距离 */
+    display: flex;                     /* 让链接水平排列 */
+    flex-wrap: wrap;                   /* 空间不足时自动换行 */
+    gap: 10px 16px;                    /* 设置行间距和列间距 */
+    font-size: 11px;                   /* 设置较小的文字 */
+    color: #666;                       /* 设置文字颜色 */
+}
+
+/* 页脚链接 */
+.footer a {
+    color: inherit;                    /* 继承父元素的文字颜色 */
+    text-decoration: none;             /* 去除默认下划线 */
+    cursor: pointer;                   /* 鼠标悬停时显示手形 */
+}
+
+/* 鼠标悬停时显示下划线 */
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/*开发者模式主题*/
+
+/* 开启开发者模式后，改变整个网页的背景颜色 */
+body.nerdy-mode {
+    background: #eaf0fa;
+}
+
+/* 开启开发者模式后，改变两张卡片的背景颜色 */
+body.nerdy-mode .profile-card,
+body.nerdy-mode .stats-card {
+    background: #e7efff;
+}
+
+/* 开启开发者模式后，在用户名后显示代码符号 */
+body.nerdy-mode .profile-name::after {
+    content: " </>";
+    color: #315fb9;
+    font-size: 16px;
+}
+
+/*手机屏幕适配*/
+
+/* 当屏幕宽度小于或等于 560px 时应用这些样式 */
+@media (max-width: 560px) {
+
+    /* 缩小页面外围留白 */
+    body {
+        padding: 8px;
+    }
+
+    /* 调整页面主体的内边距和间距 */
+    .page {
+        padding: 20px 16px;
+        border-radius: 20px;
+        gap: 22px;
+    }
+
+    /* 手机屏幕上，头像和个人信息改为上下布局 */
+    .profile-card {
+        flex-direction: column;
+        padding: 18px;
+    }
+
+    /* 手机屏幕上的头像区域 */
+    .avatar-section {
+        display: flex;                 /* 头像与上传按钮水平排列 */
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        text-align: left;
+    }
+
+    /* 缩小手机屏幕上的头像 */
+    .avatar {
+        width: 76px;
+        height: 76px;
+        flex-shrink: 0;
+        margin: 0;
+    }
+
+    /* 缩小累计时间的字号，避免溢出 */
+    .hours {
+        font-size: 30px;
+    }
+
+    /* 将志愿服务文字和奖牌改为上下排列 */
+    .stats-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* 让奖牌均匀分布 */
+    .medals {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    /* 允许奖牌根据手机屏幕调整宽度 */
+    .medal {
+        flex: 1;
+        max-width: 90px;
+    }
+
+    /* 调整手机屏幕上的统计标签字号 */
+    .stat-label {
+        font-size: 20px;
+    }
+}
